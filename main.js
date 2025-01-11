@@ -11,6 +11,13 @@ export let tasks = {
 // Initialize the board
 export function initializeBoard() {
   Object.keys(tasks).forEach((column) => {
+    // Update column header with task count
+    const columnHeader = document.querySelector(`#${column} h2`);
+    columnHeader.textContent = `${
+      column.charAt(0).toUpperCase() + column.slice(1)
+    }(${tasks[column].length})`;
+
+    // Update tasks
     const columnEl = document.querySelector(`#${column} .tasks`);
     columnEl.innerHTML = "";
     tasks[column].forEach((task, index) => {
